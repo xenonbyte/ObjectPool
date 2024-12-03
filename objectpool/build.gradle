@@ -2,11 +2,12 @@ plugins {
     id 'org.jetbrains.kotlin.jvm'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'com.longcin'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io"  }
 }
 
 dependencies {
