@@ -1,7 +1,5 @@
 package com.longcin.pool
 
-import com.longcin.pool.ObjectPool.Companion.DEFAULT_MAX_POOL_SIZE
-
 /**
  * A generic object pool that can manage and reuse instances of objects.
  *
@@ -19,32 +17,13 @@ import com.longcin.pool.ObjectPool.Companion.DEFAULT_MAX_POOL_SIZE
  * @see com.longcin.pool.Reusable
  * @author xubo
  */
-abstract class ObjectPool<T : Reusable>(private val maxPoolSize: Int) {
-    constructor() : this(DEFAULT_MAX_POOL_SIZE)
-
-    companion object {
-        const val DEFAULT_MAX_POOL_SIZE = 5
-    }
-
+class ObjectPool<T : Reusable> internal constructor(
+    private val objectFactory: ObjectFactory<T>,
+    private val maxPoolSize: Int
+) {
     private var mPool: ObjectWrapper<T>? = null
     private var mPoolSize: Int = 0
     private val mLock = Any()
-
-    /**
-     * Reuse the given object and perform necessary reinitialization.
-     *
-     * @param instance The instance to reuse.
-     * @param args Arguments for modifying the reused object data.
-     */
-    abstract fun reuse(instance: T, vararg args: Any?)
-
-    /**
-     * Create a new object of type [T] with the given arguments.
-     *
-     * @param args Arguments used to create the object.
-     * @return A newly created instance of [T].
-     */
-    abstract fun create(vararg args: Any?): T
 
     /**
      * Obtain an object from the pool. If the pool has a reusable object, it will be returned and reused.
@@ -62,8 +41,8 @@ abstract class ObjectPool<T : Reusable>(private val maxPoolSize: Int) {
             }
 
             return reuseObject?.value?.also {
-                reuse(it, *args)
-            } ?: create(*args)
+                objectFactory.reuse(it, *args)
+            } ?: objectFactory.create(*args)
         }
     }
 
@@ -81,6 +60,13 @@ abstract class ObjectPool<T : Reusable>(private val maxPoolSize: Int) {
                 mPool = objectWrapper
                 mPoolSize++
             }
+        }
+    }
+
+    fun clear() {
+        synchronized(mLock) {
+            mPoolSize = 0
+            mPool = null
         }
     }
 

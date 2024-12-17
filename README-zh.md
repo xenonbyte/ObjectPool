@@ -1,12 +1,11 @@
 # ObjectPool
 
-An object reuse pool suitable for scenes where objects are frequently created and destroyed. If an instance exists in the reuse pool, the instance is reused; if not, a new instance is created.
+适用于对象频繁创建和销毁的对象复用池；当复用池中存在实例则复用该实例，如果不存在则创建新的实例
 
-[中文说明](README-zh.md)
+## 使用
 
-## Use
+### 创建全局对象复用池
 
-### creating a global object reuse pool
 ```kotlin
 val pool = ObjectPoolProvider.global().get(Person::class.java, object : ObjectFactory<Person> {
     override fun create(vararg args: Any?): Person {
@@ -25,7 +24,8 @@ val pool = ObjectPoolProvider.global().get(Person::class.java, object : ObjectFa
 })
 ```
 
-### use `ObjectPoolStoreOwner` instance to create an object reuse pool
+### 使用`ObjectPoolStoreOwner`创建对象复用池
+
 ```kotlin
 val store = ObjectPoolStore()
 val storeOwner = object : ObjectPoolStoreOwner {
@@ -50,35 +50,44 @@ val pool = ObjectPoolProvider.create(storeOwner).get(Person::class.java, object 
 })
 ```
 
-### get instance
-get the object instance from the object reuse pool. If the instance exists in the reuse pool, reuse the instance; if not, create a new instance
+### 获取对象
+
+从对象复用池获取对象,如果复用池存在实例，复用该实例；如果不存在则创建新的实例
+
 ```kotlin
 val person = pool.obtain("Andy", 16);
 ```
-### recycle instance
-the object reuse pool recycles objects to facilitate instance reuse
+
+### 回收对象
+
+对象复用池回收对象，方便复用
+
 ```kotlin
 pool.recycle(person)
 ```
-### implementing the `Reusable` interface
-Object classes managed by the object reuse pool must implement `Reusable`
+
+### 实现`Reusable`接口
+
+复用对象需实现`Reusable`接口
+
 ```kotlin
 class Person(var name: String, var age: Int) : Reusable
 ```
 
-
 ## Download
+
 ```groovy
 repositories {
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-  implementation 'com.longcin:objectpool:1.0.1'
+    implementation 'com.longcin:objectpool:1.0.1'
 }
 ```
 
 ## License
+
 Copyright 2024 xubo
 
 Licensed under the Apache License, Version 2.0 (the "License");
