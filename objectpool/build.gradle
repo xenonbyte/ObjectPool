@@ -1,6 +1,5 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm'
-    id 'maven-publish'
 }
 
 group = 'com.longcin'
@@ -17,21 +16,4 @@ dependencies {
 
 kotlin {
     jvmToolchain(17)
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-
-            groupId = 'com.longcin'
-            artifactId = 'objectpool'
-            version = '1.0.1'
-        }
-    }
-    repositories {
-        maven {
-            url = uri("https://jitpack.io")
-        }
-    }
 }

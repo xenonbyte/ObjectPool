@@ -82,7 +82,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.longcin:objectpool:1.0.1'
+    implementation 'com.github.xubo90:ObjectPool:1.0.1'
 }
 ```
 
