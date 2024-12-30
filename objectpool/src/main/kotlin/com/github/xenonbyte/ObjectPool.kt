@@ -1,4 +1,4 @@
-package com.longcin.pool
+package com.github.xenonbyte
 
 /**
  * A generic object pool that can manage and reuse instances of objects.

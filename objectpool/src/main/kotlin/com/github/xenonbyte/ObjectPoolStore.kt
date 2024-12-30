@@ -1,4 +1,4 @@
-package com.longcin.pool
+package com.github.xenonbyte
 
 import java.util.concurrent.locks.ReentrantReadWriteLock
 

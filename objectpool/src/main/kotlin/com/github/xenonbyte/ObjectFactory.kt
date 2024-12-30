@@ -1,4 +1,4 @@
-package com.longcin.pool
+package com.github.xenonbyte
 
 /**
  * Object Factory

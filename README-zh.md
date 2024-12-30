@@ -82,13 +82,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.xubo90:ObjectPool:1.0.1'
+    implementation 'com.github.xenonbyte:ObjectPool:1.1.0'
 }
 ```
 
 ## License
 
-Copyright 2024 xubo
+Copyright [2024] [xubo]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

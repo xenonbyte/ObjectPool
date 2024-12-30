@@ -1,4 +1,4 @@
-package com.longcin.pool
+package com.github.xenonbyte
 
 /**
  * Provides the program class for ObjectPool
