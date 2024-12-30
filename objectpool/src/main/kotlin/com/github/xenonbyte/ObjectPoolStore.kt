@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock
  * @author xubo
  */
 class ObjectPoolStore {
+    @Suppress("UNCHECKED_CAST")
     private val mPoolMap = mutableMapOf<String, ObjectPool<*>>()
     private val mLock = ReentrantReadWriteLock()
 
