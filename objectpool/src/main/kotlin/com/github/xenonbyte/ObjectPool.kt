@@ -7,14 +7,14 @@ package com.github.xenonbyte
  * Reusing object instances can help improve performance and memory efficiency, especially in resource-constrained environments.
  *
  * It allows for the efficient reuse of objects by maintaining a pool of instances that can be reused rather than creating new ones each time.
- * Objects that are reusable should implement the [com.longcin.pool.Reusable] interface.
+ * Objects that are reusable should implement the [com.github.xenonbyte.Reusable] interface.
  *
  * The pool has a maximum size (controlled by [maxPoolSize]),If the pool exceeds the maximum size, it will discard objects directly instead of saving them back.
  *
- * @param T The type of the objects that can be managed by this pool. Must be a subtype of [com.longcin.pool.Reusable].
+ * @param T The type of the objects that can be managed by this pool. Must be a subtype of [com.github.xenonbyte.Reusable].
  * @param maxPoolSize The maximum number of objects the pool can hold. Default is [DEFAULT_MAX_POOL_SIZE].
  *
- * @see com.longcin.pool.Reusable
+ * @see com.github.xenonbyte.Reusable
  * @author xubo
  */
 class ObjectPool<T : Reusable> internal constructor(

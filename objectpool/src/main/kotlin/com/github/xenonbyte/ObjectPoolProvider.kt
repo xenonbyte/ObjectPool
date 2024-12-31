@@ -16,7 +16,7 @@ class ObjectPoolProvider private constructor(
 
     companion object {
         private const val DEFAULT_POOL_MAX_SIZE = 5
-        private const val DEFAULT_POOL_KEY_PREFIX = "longcin.pool.DEFAULT_KEY";
+        private const val DEFAULT_POOL_KEY_PREFIX = "xenon_byte.pool.DEFAULT_KEY";
         private val GLOBAL_POOL_STORE_OWNER = object : ObjectPoolStoreOwner {
             override val store: ObjectPoolStore
                 get() = ObjectPoolStore()
@@ -65,7 +65,7 @@ class ObjectPoolProvider private constructor(
      *
      * @param clazz The class of the object type [T] that the pool manages.
      * @param factory The factory used to create objects of type [T].
-     * @param maxPoolSize The maximum size of the pool. Defaults to [DEFAULT_POOL_MAX_SIZE].
+     * @param maxPoolSize The maximum size of the pool. Defaults to [ObjectPoolProvider.DEFAULT_POOL_MAX_SIZE].
      * @return The object pool for the given object type.
      */
     fun <T : Reusable> get(

@@ -74,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.xenonbyte:ObjectPool:1.1.0'
+    implementation 'com.github.xenonbyte:ObjectPool:1.1.1'
 }
 ```
 
