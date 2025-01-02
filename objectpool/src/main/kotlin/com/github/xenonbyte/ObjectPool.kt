@@ -12,7 +12,7 @@ package com.github.xenonbyte
  * The pool has a maximum size (controlled by [maxPoolSize]),If the pool exceeds the maximum size, it will discard objects directly instead of saving them back.
  *
  * @param T The type of the objects that can be managed by this pool. Must be a subtype of [com.github.xenonbyte.Reusable].
- * @param maxPoolSize The maximum number of objects the pool can hold. Default is [DEFAULT_MAX_POOL_SIZE].
+ * @param maxPoolSize The maximum number of objects the pool can hold. Default is [ObjectPoolProvider.DEFAULT_POOL_MAX_SIZE].
  *
  * @see com.github.xenonbyte.Reusable
  * @author xubo
